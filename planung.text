@@ -19,7 +19,84 @@
 - Führen Sie die numerische Integration der Funktion sin ((𝑥 +1/32) ∗ 16𝜋)
 auf dem Intervall [0,1] mit Obersummen, Untersummen oder der Trapezregel durch.
 Vergleichen Sie die Ergebnisse bei der Aufteilung auf 2,4,8 und 16 gleichgroße Intervalle und
-erklären Sie die Ergebnisse
+erklären Sie die Ergebnisse + an Text einfügen: Können Sie Kriterien formulieren, die gute Ergebnisse der numerischen Integration garantieren
 6. Dokumentation des Codes
 7. PDF Erstellen mit Outputs und Diagrammen
 (8. PDF für andere Präsentationen) (braucht keiner)
+
+
+Step-by-Step Breakdown
+Let's use a simple example: f(x) = x² on the interval [0, 2] with 4 intervals.
+Step 1: Calculate the width of each subinterval
+pythondx = (up_interv - low_interv) / numberintervall
+Example:
+
+up_interv = 2, low_interv = 0, numberintervall = 4
+dx = (2 - 0) / 4 = 0.5
+
+This means each small rectangle will have a width of 0.5.
+Step 2: Create x-values at subinterval boundaries
+pythonx_vals = np.linspace(low_interv, up_interv, numberintervall + 1)
+Example:
+
+np.linspace(0, 2, 5) creates: [0.0, 0.5, 1.0, 1.5, 2.0]
+We need 5 points to define 4 intervals:
+
+Interval 1: [0.0, 0.5]
+Interval 2: [0.5, 1.0]
+Interval 3: [1.0, 1.5]
+Interval 4: [1.5, 2.0]
+
+
+
+Step 3: Calculate function values at all boundary points
+pythony_vals = math_func(x_vals)
+Example for f(x) = x²:
+
+x_vals = [0.0, 0.5, 1.0, 1.5, 2.0]
+y_vals = [0.0, 0.25, 1.0, 2.25, 4.0]
+
+Step 4: The main loop - process each interval
+pythonfor i in range(numberintervall):  # i goes from 0 to 3
+Let me show what happens in each iteration:
+Iteration 0 (i=0): Interval [0.0, 0.5]
+pythonleft_val = y_vals[0] = 0.0    # f(0) = 0²
+right_val = y_vals[1] = 0.25  # f(0.5) = 0.5²
+min_val = min(0.0, 0.25) = 0.0
+max_val = max(0.0, 0.25) = 0.25
+lower_sum += 0.0 * 0.5 = 0.0
+upper_sum += 0.25 * 0.5 = 0.125
+Iteration 1 (i=1): Interval [0.5, 1.0]
+pythonleft_val = y_vals[1] = 0.25   # f(0.5) = 0.25
+right_val = y_vals[2] = 1.0   # f(1.0) = 1²
+min_val = min(0.25, 1.0) = 0.25
+max_val = max(0.25, 1.0) = 1.0
+lower_sum += 0.25 * 0.5 = 0.125  (total: 0.125)
+upper_sum += 1.0 * 0.5 = 0.5     (total: 0.625)
+Iteration 2 (i=2): Interval [1.0, 1.5]
+pythonleft_val = y_vals[2] = 1.0    # f(1.0) = 1²
+right_val = y_vals[3] = 2.25  # f(1.5) = 1.5²
+min_val = min(1.0, 2.25) = 1.0
+max_val = max(1.0, 2.25) = 2.25
+lower_sum += 1.0 * 0.5 = 0.5     (total: 0.625)
+upper_sum += 2.25 * 0.5 = 1.125  (total: 1.75)
+Iteration 3 (i=3): Interval [1.5, 2.0]
+pythonleft_val = y_vals[3] = 2.25   # f(1.5) = 1.5²
+right_val = y_vals[4] = 4.0   # f(2.0) = 2²
+min_val = min(2.25, 4.0) = 2.25
+max_val = max(2.25, 4.0) = 4.0
+lower_sum += 2.25 * 0.5 = 1.125  (total: 1.75)
+upper_sum += 4.0 * 0.5 = 2.0     (total: 3.75)
+Final Results:
+
+Lower sum: 1.75 (uses shorter rectangles)
+Upper sum: 3.75 (uses taller rectangles)
+Exact integral: ∫₀² x² dx = 8/3 ≈ 2.67
+
+Visual Understanding:
+Think of it like this:
+
+You're approximating the area under a curve using rectangles
+Lower sum: Each rectangle's height is the minimum function value in that interval
+Upper sum: Each rectangle's height is the maximum function value in that interval
+The true area lies somewhere between these two approximations
