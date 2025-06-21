@@ -1,0 +1,25 @@
+1. Erklärung Mathematisch numerische Integration mittels Obersummen, Untersummen und Trapezregel 
+(Schreib einf text in einer neuen Text datei und ich füg den text später ein)
+2. Funktion Nummerische Integration zwei methodiken: Ober/Untersummen und Trapezregel
+- Aufrufbar (callable)
+- Parameter zur Wahl des Integrationstyp und dessen Parametrierung (math. Funktion, Grenzen) 
+- Bei Ober/Untersummen noch: Anzahl Intervalle als Parameter
+- Ausnahme: Definitionslücken, Nulldurchgänge
+3. Funktion Integration mittels Monte-Carlo Simulation (dritte Methodik)
+- Zusammenhang zur vorherigen Funktion erstellen - durch Klasse?
+- Parameter: Sampling-Bereich - die noch gucken
+- zusatzt. Methode, die selber Ober und Untersummenbereich bestimmt
+4. Funktion Darstellung der vorherigen Methoden 
+- geeignete Schnittstelle - Inegration der Funktionalität ???
+- Darstellung eines Koordinatensystems mit der Funktion und ober untersummen z.b 
+5. Tests machen und vergleichen
+- sin 𝑥 auf dem Intervall [0,2𝜋]
+𝑥hoch2 − 4𝑥 + 2 auf dem Intervall [−3,3]
+𝑒hochx auf dem Intervall [0,10]
+- Führen Sie die numerische Integration der Funktion sin ((𝑥 +1/32) ∗ 16𝜋)
+auf dem Intervall [0,1] mit Obersummen, Untersummen oder der Trapezregel durch.
+Vergleichen Sie die Ergebnisse bei der Aufteilung auf 2,4,8 und 16 gleichgroße Intervalle und
+erklären Sie die Ergebnisse
+6. Dokumentation des Codes
+7. PDF Erstellen mit Outputs und Diagrammen
+(8. PDF für andere Präsentationen) (braucht keiner)
